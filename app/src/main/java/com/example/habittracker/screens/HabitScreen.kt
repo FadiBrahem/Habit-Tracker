@@ -1,4 +1,4 @@
-package com.example.habittracker.screens.habit
+package com.example.habittracker.screens
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -12,7 +12,7 @@ import com.example.habittracker.viewmodel.UserViewModel
 
 @Composable
 fun HabitScreen(userViewModel: UserViewModel) {
-    val habits = remember { mutableStateListOf("Exercise", "Read", "Meditate") }
+    val habits = remember { mutableStateListOf("") }
     var newHabit by remember { mutableStateOf("") }
     var daysChecked = remember { mutableStateListOf(false, false, false, false, false, false, false) }
 

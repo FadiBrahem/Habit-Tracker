@@ -1,5 +1,6 @@
-package com.example.habittracker.screens.login
+package com.example.habittracker.screens
 
+import android.util.Log
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.runtime.*
@@ -8,7 +9,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.example.habittracker.screens.navigation.Screen
+import com.example.habittracker.screens.Screen
 import com.example.habittracker.viewmodel.UserViewModel
 
 @Composable
@@ -16,25 +17,37 @@ fun LoginScreen(navController: NavController, userViewModel: UserViewModel) {
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
     val isLoggedIn = userViewModel.isLoggedIn.collectAsState()
-
+    Log.e("LoginScreen", "LoginScreen: ", )
     if (isLoggedIn.value) {
         LaunchedEffect(Unit) {
-            navController.navigate(Screen.HabitScreen.route) {
+            navController.navigate(Screen.IconGridScreen.route) { // Updated navigation route
                 popUpTo(Screen.LoginScreen.route) { inclusive = true }
+
             }
         }
     } else {
         Column(
-            modifier = Modifier.fillMaxSize().padding(16.dp),
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(16.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
+            Spacer(modifier = Modifier.height(8.dp))
+
+            Text(
+                text = "Welcome and login in",
+                style = MaterialTheme.typography.h6, // Adjust the style as needed
+                modifier = Modifier.padding(bottom = 16.dp)
+            )
+
             TextField(
                 value = email,
                 onValueChange = { email = it },
                 label = { Text("Email") },
                 modifier = Modifier.fillMaxWidth()
             )
+
             Spacer(modifier = Modifier.height(8.dp))
             TextField(
                 value = password,

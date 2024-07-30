@@ -57,7 +57,19 @@ dependencies {
     implementation(libs.androidx.lifecycle.runtime.ktx.v251)
     implementation(libs.androidx.activity.compose.v161)
     implementation(libs.androidx.room.runtime)
+    implementation(libs.retrofit.v290)
+    implementation(libs.moshi)
+    implementation(libs.kotlinx.coroutines.android)
 
+    implementation(libs.converter.moshi.v290)
+
+
+    implementation(libs.moshi)
+    implementation(libs.moshi.kotlin)
+
+
+    implementation(libs.kotlinx.coroutines.core)
+    implementation(libs.kotlinx.coroutines.android.v152)
     implementation (libs.mpandroidchart)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
@@ -71,6 +83,9 @@ dependencies {
     implementation(libs.androidx.foundation.android)
     implementation(libs.androidx.navigation.runtime.ktx)
     implementation(libs.androidx.navigation.compose)
+    implementation(libs.retrofit)
+    implementation(libs.converter.moshi)
+    implementation(libs.moshi)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

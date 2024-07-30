@@ -5,7 +5,8 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.lifecycle.ViewModelProvider
 import com.example.habittracker.data.UserRepository
-import com.example.habittracker.screens.navigation.AppNavigation
+
+import com.example.habittracker.screens.AppNavigation
 import com.example.habittracker.ui.theme.HabitTrackerTheme
 import com.example.habittracker.viewmodel.UserViewModel
 import com.example.habittracker.viewmodel.UserViewModelFactory
