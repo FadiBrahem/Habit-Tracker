@@ -18,16 +18,19 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.habittracker.R
 
-// Define a data class to represent each icon item
+
 data class IconItem(val imageRes: Int, val text: String, val route: String)
 
 
 val iconItems = listOf(
-    IconItem(R.drawable.calculator, "Calculator", "calculatorRoute"),
+    IconItem(R.drawable.calculator, "Calculator", Screen.CalculatorUI.route),
     IconItem(R.drawable.todolist, "ToDoList", Screen.HabitScreen.route),
     IconItem(R.drawable.weather, "Weather", "Weather"),
-    IconItem(R.drawable.stopwatch, "Stopwatch", "StopwatchRoute"),
-    IconItem(R.drawable.notes, "Notes", "NotesRoute")
+    IconItem(R.drawable.stopwatch, "Stopwatch", Screen.Stopwatch.route),
+    IconItem(R.drawable.notes, "Notes", "NotesRoute"),
+    IconItem(R.drawable.gallery, "Gallery", Screen.Gallery.route)
+
+
 )
 
 @Composable
@@ -85,7 +88,7 @@ fun IconItemView(item: IconItem, navController: NavController) {
     }
 }
 
-// Add composable previews if needed for UI design
+
 @Preview(showBackground = true)
 @Composable
 fun IconGridScreenPreview() {

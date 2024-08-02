@@ -50,6 +50,10 @@ android {
 }
 
 dependencies {
+    implementation(libs.coil.compose)
+
+
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.ui)
     implementation(libs.androidx.material)
@@ -66,8 +70,8 @@ dependencies {
 
     implementation(libs.moshi)
     implementation(libs.moshi.kotlin)
-
-
+    implementation(libs.accompanist.permissions)
+    implementation(libs.androidx.activity.compose.v191)
     implementation(libs.kotlinx.coroutines.core)
     implementation(libs.kotlinx.coroutines.android.v152)
     implementation (libs.mpandroidchart)

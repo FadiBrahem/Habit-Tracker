@@ -1,6 +1,9 @@
 [versions]
+accompanistPermissions = "0.31.1-alpha"
 activityComposeVersion = "1.6.1"
 agp = "8.6.0-alpha06"
+androidxActivityCompose = "1.9.1"
+coilCompose = "2.2.2"
 converterMoshiVersion = "2.9.0"
 kotlin = "1.9.0"
 coreKtx = "1.13.1"
@@ -30,12 +33,15 @@ converterMoshi = "2.11.0"
 moshi = "1.15.1"
 
 [libraries]
+accompanist-permissions = { module = "com.google.accompanist:accompanist-permissions", version.ref = "accompanistPermissions" }
 androidx-activity-compose-v161 = { module = "androidx.activity:activity-compose", version.ref = "activityComposeVersion" }
+androidx-activity-compose-v191 = { module = "androidx.activity:activity-compose", version.ref = "androidxActivityCompose" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-lifecycle-runtime-ktx-v251 = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtxVersion" }
 androidx-material = { module = "androidx.compose.material:material", version.ref = "material" }
 androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "roomRuntime" }
 androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "roomRuntime" }
+coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coilCompose" }
 converter-moshi-v290 = { module = "com.squareup.retrofit2:converter-moshi", version.ref = "converterMoshiVersion" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }

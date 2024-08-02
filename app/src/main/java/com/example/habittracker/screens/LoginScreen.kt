@@ -9,20 +9,21 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.example.habittracker.screens.Screen
 import com.example.habittracker.viewmodel.UserViewModel
+import com.example.habittracker.utils.isValidEmail
 
 @Composable
 fun LoginScreen(navController: NavController, userViewModel: UserViewModel) {
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
     val isLoggedIn = userViewModel.isLoggedIn.collectAsState()
-    Log.e("LoginScreen", "LoginScreen: ", )
+
+    Log.e("LoginScreen", "LoginScreen: ")
+
     if (isLoggedIn.value) {
         LaunchedEffect(Unit) {
-            navController.navigate(Screen.IconGridScreen.route) { // Updated navigation route
+            navController.navigate(Screen.IconGridScreen.route) {
                 popUpTo(Screen.LoginScreen.route) { inclusive = true }
-
             }
         }
     } else {
@@ -37,7 +38,7 @@ fun LoginScreen(navController: NavController, userViewModel: UserViewModel) {
 
             Text(
                 text = "Welcome and login in",
-                style = MaterialTheme.typography.h6, // Adjust the style as needed
+                style = MaterialTheme.typography.h6,
                 modifier = Modifier.padding(bottom = 16.dp)
             )
 
@@ -45,8 +46,16 @@ fun LoginScreen(navController: NavController, userViewModel: UserViewModel) {
                 value = email,
                 onValueChange = { email = it },
                 label = { Text("Email") },
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier.fillMaxWidth(),
+                isError = email.isNotEmpty() && !isValidEmail(email)
             )
+            if (email.isNotEmpty() && !isValidEmail(email)) {
+                Text(
+                    text = "Invalid email format",
+                    color = MaterialTheme.colors.error,
+                    style = MaterialTheme.typography.caption
+                )
+            }
 
             Spacer(modifier = Modifier.height(8.dp))
             TextField(
@@ -54,8 +63,16 @@ fun LoginScreen(navController: NavController, userViewModel: UserViewModel) {
                 onValueChange = { password = it },
                 label = { Text("Password") },
                 visualTransformation = PasswordVisualTransformation(),
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier.fillMaxWidth(),
+                isError = password.isNotEmpty() && password.length < 6
             )
+            if (password.isNotEmpty() && password.length < 6) {
+                Text(
+                    text = "Password must be at least 6 characters",
+                    color = MaterialTheme.colors.error,
+                    style = MaterialTheme.typography.caption
+                )
+            }
             Spacer(modifier = Modifier.height(16.dp))
             Button(
                 onClick = { userViewModel.login(email, password) },
